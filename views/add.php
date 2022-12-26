@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="index.php?action=list-restaurants">See all available restaurants....</a>
     <form action="" method="POST">
         <input type="text" id="name" name="name" placeholder="Restaurant Name">
         <select name="cuisine" id="cuisine">

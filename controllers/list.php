@@ -1,9 +1,12 @@
 
 <?php
 
-    // require 'model/postManager.php';
+require_once 'models/restaurants.php';
 
-    // // $manager = new 
-    // // $posts = $manager->getPosts();
+$restaurants = new Restaurants();
 
-    // require 'view/listView.php';
+$listOfRestaurants = $restaurants->getRestaurants();
+
+//Need to get a lisf of restaurants and store it in variable restaurant....
+
+ require 'views/list.php';

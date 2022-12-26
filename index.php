@@ -18,7 +18,7 @@ try {
     //include('./controller/' . $action . 'php')
     
     switch($action) {
-        case "list":
+        case "list-restaurants":
             include 'controllers/list.php';
             break;
         case "add-restaurant":

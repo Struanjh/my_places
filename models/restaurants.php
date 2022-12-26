@@ -4,12 +4,12 @@ require_once './models/db.php';
 
 class Restaurants extends Db {
 
-  // public function getRestaurants () {
-  //   $db = $this->connectDB();
-  //   $restaurants = $db->query('SELECT * FROM posts');
-  //   $posts = $posts->fetchAll();
-  //   return $posts;
-  // }
+  public function getRestaurants () {
+    $db = $this->connectDB();
+    $restaurants = $db->query('SELECT * FROM restaurants');
+    $restaurants = $restaurants->fetchAll();
+    return $restaurants;
+  }
 
   public function addRestaurant($data) {
     echo "MY DATA" . "<br>";

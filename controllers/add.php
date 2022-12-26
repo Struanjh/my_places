@@ -15,6 +15,10 @@ print_r($requestIdentifier);
 if($requestIdentifier === 'add-restaurant') {
     print_r($requestData);
     $restaurants->addRestaurant($requestData[0]);
+    return json_encode([
+        'success' => true,
+        'message' => 'Restaurant Added Successfully!'
+    ]);
 }
 
 require_once 'views/add.php';
