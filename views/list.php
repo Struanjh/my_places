@@ -34,7 +34,7 @@
         ?>
     </div>
     <div id="edit-form-container">
-    <?= require_once './views/components/edit-modal.php' ?>
+    <?= require_once './views/components/form-modal.php' ?>
     </div>
 </body>
 </html>

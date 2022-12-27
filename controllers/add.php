@@ -7,19 +7,19 @@ $restaurants = new Restaurants();
 
 $content = trim(file_get_contents("php://input"));
 $data = json_decode($content, true);
-$requestIdentifier = isset($data[0]) ? array_key_first($data[0]) : 'NOT FOUND';
-$requestData = isset($data[1]) ?array_slice($data, 1) : 'NO DATA';
+$requestIdentifier = isset($data['request-id']) ? $data['request-id'] : 'NOT FOUND';
+$requestData = isset($data['data']) ? $data['data'] : 'NO DATA';
 
-print_r($requestIdentifier);
+$submissionType = 'add-form';
+$btn = 'add-restaurant';
+$btnText = 'Add a new restaurant';
 
 if($requestIdentifier === 'add-restaurant') {
-    print_r($requestData);
-    $restaurants->addRestaurant($requestData[0]);
-    return json_encode([
+    $restaurants->addRestaurant($requestData);
+    die(json_encode([
         'success' => true,
-        'message' => 'Restaurant Added Successfully!'
-    ]);
-    $submissionType = 'add-form';
+        'msg' => 'Restaurant Added Successfully!'
+      ]));
 }
 
 require_once 'views/add.php';
