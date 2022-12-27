@@ -12,7 +12,7 @@ $requestID = isset($data['request-id']) ? $data['request-id'] : 'NOT FOUND';
 $requestData = isset($data['data']) ? $data['data'] : 'NO DATA';
 
 
-if($requestID  === 'edit-restaurant') {
+if($requestID  === 'delete-restaurant') {
     print_r($requestData);
-    $restaurants->editRestaurant($requestData);
+    $restaurants->deleteRestaurant($requestData);
 }

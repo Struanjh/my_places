@@ -56,6 +56,35 @@ editBtns.forEach(btn => {
     })
 });
 
+deleteBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+        container = btn.parentElement.parentElement;
+        id = container.getAttribute('data-restaurant-id');
+        let headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        };
+        let data = {
+            'request-id': 'delete-restaurant',
+            'data': {
+                'id': id
+            }
+        };
+         //Call request
+         let reqUrl = `/my_places/index.php?action=delete-restaurant`;
+         try {
+             let res = await functions.makeRequest(reqUrl, headers, 'POST', data);
+             if(!res.ok) {
+                 throw new Error('Required');
+             }
+             container.remove();
+         } catch (e) {
+             console.error(e);
+             //Form Error Message
+         }     
+    })
+})
+
 //Doesn't need to happen for Add Form so fine to keep here..
 const populateModal = (id, values) => {
     name.value = values.name;

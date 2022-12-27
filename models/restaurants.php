@@ -25,7 +25,6 @@ class Restaurants extends Db {
 
 
   public function editRestaurant($data) {
-    print_r($data);
     $db = $this->connectDB();
     $sql = "UPDATE restaurants SET name=:name, cuisine=:cuisine, price=:price, url=:url WHERE id=:id";
     $db->prepare($sql)->execute([
@@ -35,5 +34,13 @@ class Restaurants extends Db {
       'url' => $data['url'],
       'id' => $data['id']
     ]);
+  }
+
+  public function deleteRestaurant($data) {
+    $id = $data['id'];
+    $db = $this->connectDB();
+    $sql = "DELETE FROM restaurants WHERE id=?";
+    $stmt= $db->prepare($sql);
+    $stmt->execute([$id]);
   }
 }

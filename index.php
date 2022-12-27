@@ -1,5 +1,3 @@
-
-
 <?php
 
 try {
@@ -14,6 +12,9 @@ try {
             break;
         case "edit-restaurant":
             include 'controllers/edit.php';
+            break;
+        case "delete-restaurant":
+            include 'controllers/delete.php';
             break;
         default:
             echo 'Nope youve chosen an invalid route';
