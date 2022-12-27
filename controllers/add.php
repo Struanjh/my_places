@@ -19,6 +19,7 @@ if($requestIdentifier === 'add-restaurant') {
         'success' => true,
         'message' => 'Restaurant Added Successfully!'
     ]);
+    $submissionType = 'add-form';
 }
 
 require_once 'views/add.php';

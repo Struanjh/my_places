@@ -9,4 +9,8 @@ $listOfRestaurants = $restaurants->getRestaurants();
 
 //Need to get a lisf of restaurants and store it in variable restaurant....
 
- require 'views/list.php';
+$submissionType = 'edit-form';
+$btn = 'edit-restaurant';
+$btnText = 'Edit Restaurant Details';
+
+require 'views/list.php';

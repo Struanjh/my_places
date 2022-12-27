@@ -1,11 +1,16 @@
 
+import * as functions from "./functions.js";
+
+
 console.log('Hello World');
+
 
 const addRestaurantBtn = document.getElementById('add-restaurant');
 const restName = document.getElementById('name');
 const cuisine = document.getElementById('cuisine');
 const price = document.getElementById('price');
 const url = document.getElementById('url');
+const submissionOutcome = document.getElementById('outcome');
 
 
 console.log(addRestaurantBtn);
@@ -30,21 +35,14 @@ addRestaurantBtn.addEventListener('click', async () => {
         data.push(formData);
         //Call request
         let reqUrl = `/my_places/index.php?action=add-restaurant`;
-        let res = await makeRequest(reqUrl, headers, 'POST', data);
-        console.log(res);
+        try {
+            let res = await functions.makeRequest(reqUrl, headers, 'POST', data);
+            if(!res.ok) {
+                throw new Error('Required');
+            }
+        } catch (e) {
+            console.error(e);
+        }
+        submissionOutcome.textContent = 'HELLO';
     }
 })
-
-const validateFormSubmission = () => {
-    console.log('FORM VALIDATION');
-    return true;
-}
-
-const makeRequest = (url, headers, method, data) => {
-    let options = {};
-    options.headers = headers;
-    options.method = method;
-    if(method === 'POST') options.body = JSON.stringify(data);
-    console.log(url, options);
-    return fetch(url, options);
-}
