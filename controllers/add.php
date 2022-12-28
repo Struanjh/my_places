@@ -12,7 +12,7 @@ $requestData = isset($data['data']) ? $data['data'] : 'NO DATA';
 
 $submissionType = 'add-form';
 $btn = 'add-restaurant';
-$btnText = 'Add a new restaurant';
+$btnText = 'Add Restaurant';
 
 if($requestIdentifier === 'add-restaurant') {
     $restaurants->addRestaurant($requestData);

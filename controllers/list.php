@@ -11,6 +11,6 @@ $listOfRestaurants = $restaurants->getRestaurants();
 
 $submissionType = 'edit-form';
 $btn = 'edit-restaurant';
-$btnText = 'Edit Restaurant Details';
+$btnText = 'Edit Restaurant';
 
 require 'views/list.php';

@@ -19,10 +19,11 @@
   form {
     display: flex;
     flex-direction: column;
-    background-color: green;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
+    background-color: white;
     border: 1px solid #888;
+    border-radius: 10px;
     justify-content: space-between;
     align-items: center;
     height: 50%;
@@ -31,7 +32,10 @@
 
   form input,select {
     height: 25px;
+    padding: 5px;
     width: 50%;
+    border: solid 1px lightblue;
+    border-radius: 10px;
   }
 
   #edit-form-container, #add-form-container {
@@ -47,10 +51,18 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
 
+  form button {
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+    background-color: darkblue;
+    color: white;
+  }
+
 
   /* The Close Button */
 .close {
-  color: #aaa;
+  color: lightcoral;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -58,7 +70,7 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: darkred;
   text-decoration: none;
   cursor: pointer;
 }
