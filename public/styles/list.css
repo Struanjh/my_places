@@ -2,9 +2,18 @@
     display: grid;
     margin: 0 auto;
     width: 70vw;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
     row-gap : 20px ; 
-    column-gap : 30px 
+    column-gap : 30px;
+    overflow-wrap: break-word;
+}
+
+#results-container > div.restaurant-container.card {
+    color: black;
+}
+
+#results-container > div.restaurant-container.card > * {
+    text-align: center;
 }
 
 h1.results-header {

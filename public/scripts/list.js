@@ -1,6 +1,7 @@
 
 import * as functions from "./functions.js";
 
+const editForm = document.getElementById('edit-form');
 const editBtns = document.querySelectorAll('div.controls button.edit');
 const deleteBtns = document.querySelectorAll('div.controls button.delete');
 const editFormContainer = document.getElementById('edit-form-container');
@@ -28,12 +29,16 @@ editSubmit.addEventListener('click', () => {
     modalClose.onclick = function() {
         editFormContainer.style.display = "none";
         resultsContainer.classList.remove('is-blurred');
+        editForm.reset();
+        formResult.innerHTML = '';
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == editFormContainer) {
             editFormContainer.style.display = "none";
             resultsContainer.classList.remove('is-blurred');
+            editForm.reset();
+            formResult.innerHTML = '';
         }
     }
   })();
@@ -95,22 +100,21 @@ const populateModal = (id, values) => {
 
 //Needs to be  moved to generic functions..
 const handleSubmission = async (id) => {
-    console.log('REQUEST IS BEING SENT');
-    if(functions.validateFormSubmission()) {
-        let headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        };
-        let data = {
-            'request-id': 'edit-restaurant',
-            'data': {
-                'id': id,
-                'name': name.value,
-                'cuisine': cuisine.value,
-                'price': price.value,
-                'url': url.value,
-            }
-        };
+    let headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    };
+    let data = {
+        'request-id': 'edit-restaurant',
+        'data': {
+            'id': id,
+            'name': name.value,
+            'cuisine': cuisine.value,
+            'price': price.value,
+            'url': url.value,
+        }
+    };
+    if(functions.validateFormSubmission(data.data)) {
         //Call request
         let reqUrl = `/my_places/index.php?action=edit-restaurant`;
         try {
@@ -121,11 +125,15 @@ const handleSubmission = async (id) => {
             updateUI(data);
             //Form Success Message
             formResult.innerHTML = 'Record Updated';
+            setTimeout(() => {
+                editForm.reset();
+            }, 1500);
         } catch (e) {
             console.error(e);
             //Form Error Message
-        }
-             
+        }       
+    } else {
+        formResult.innerHTML = 'Form Validation Failed';
     }
 }
 

@@ -4,7 +4,7 @@ import * as functions from "./functions.js";
 
 console.log('Hello World');
 
-
+const addForm = document.getElementById('add-form');
 const pageContainer = document.querySelector('div.page-container')
 const addFormContainer = document.getElementById('add-form-container');
 const name = document.getElementById('name');
@@ -27,33 +27,36 @@ const formResult = document.querySelector('div.result-msg');
     modalHide.onclick = function() {
         addFormContainer.style.display = "none";
         pageContainer.classList.remove('is-blurred');
+        addForm.reset();
+        formResult.textContent = '';
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == addFormContainer) {
             addFormContainer.style.display = "none";
             pageContainer.classList.remove('is-blurred');
+            addForm.reset();
+            formResult.textContent = '';
         }
     }
   })();
 
 
 const handleSubmission = async () => {
-    console.log('REQUEST IS BEING SENT');
-    if(functions.validateFormSubmission()) {
-        let headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        };
-        let data = {
-            'request-id': 'add-restaurant',
-            'data': {
-                'name': name.value,
-                'cuisine': cuisine.value,
-                'price': price.value,
-                'url': url.value,
-            }
-        };
+    let data = {
+        'request-id': 'add-restaurant',
+        'data': {
+            'name': name.value,
+            'cuisine': cuisine.value,
+            'price': price.value,
+            'url': url.value,
+        }
+    };
+    let headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    };
+    if(functions.validateFormSubmission(data.data)) {
         //Call request
         let reqUrl = `/my_places/index.php?action=add-restaurant`;
         console.log(data, reqUrl, headers);
@@ -66,9 +69,14 @@ const handleSubmission = async () => {
             let jsonRes = await res.json();
             console.log(jsonRes);
             formResult.innerHTML = jsonRes.msg;
+            setTimeout(() => {
+                addForm.reset();
+            }, 1500);
         } catch (e) {
             console.error(e);
         }      
+    } else {
+        formResult.innerHTML = 'Form Validation Failed';
     }
 }
 

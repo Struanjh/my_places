@@ -11,7 +11,14 @@ export const makeRequest = (url, headers, method, data) => {
 }
 
 //VALIDATE FORM
-export const validateFormSubmission = () => {
+export const validateFormSubmission = (data) => {
     console.log('FORM VALIDATION');
+    console.log(data);
+    for(let x in data) {
+        console.log(x, data[x]);
+        if(data[x] === '') {
+            return false;
+        }
+    }
     return true;
 }
