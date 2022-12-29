@@ -22,4 +22,5 @@ h1.results-header {
 
 #map {
     height: 30vh;
+    position: fixed;
 }

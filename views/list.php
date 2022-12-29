@@ -35,6 +35,7 @@
                     <p class="rest-attribute url"><?=$listOfRestaurants[$i]['url'] ?? ''?></p>
                 </div>
                 <div class="controls">
+                    <button type="button" name="show-location" class="show-location">Show Location</button>
                     <button type="button" name="edit" class="edit">Edit</button>
                     <button type="button" name="delete" class="delete">Delete</button>
                 </div>

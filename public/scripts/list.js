@@ -4,8 +4,10 @@ import * as functions from "./functions.js";
 const editForm = document.getElementById('edit-form');
 const editBtns = document.querySelectorAll('div.controls button.edit');
 const deleteBtns = document.querySelectorAll('div.controls button.delete');
+const locationBtns = document.querySelectorAll('div.controls button.show-location');
 const editFormContainer = document.getElementById('edit-form-container');
 const resultsContainer = document.getElementById('results-container');
+const restaurantContainer = document.querySelectorAll('div.restaurant-container.card');
 let formResult = document.querySelector('div.result-msg');
 let name = document.querySelector('#name');
 let cuisine = document.querySelector('#cuisine');
@@ -20,14 +22,36 @@ let map;
 console.log(editBtns, deleteBtns);
 console.log(formResult);
 
+//Set to Seoul by default
+let defaultcords = {lat: 37.566, lng: 126.978};
+let coords = defaultcords;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    center: coords,
+    zoom: 10,
   });
 }
 
 window.initMap = initMap;
+
+function moveToLocation(lat, lng){
+    
+  }
+
+locationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        //Get lat and long
+        let container = btn.parentElement.parentElement;
+        let lat = container.getAttribute('data-restaurant-lat');
+        let lon = container.getAttribute('data-restaurant-lon');
+        lat = parseFloat(lat);
+        lon = parseFloat(lon);
+        const center = new google.maps.LatLng(lat, lon);
+        map.panTo(center);
+        map.zoom = 10;
+    })
+});
 
 
 editSubmit.addEventListener('click', () => {
