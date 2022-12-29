@@ -15,9 +15,20 @@ let editSubmit = document.querySelector('#edit-restaurant');
 let modalClose = document.querySelector('span.close');
 let id;
 let container;
+let map;
 
 console.log(editBtns, deleteBtns);
 console.log(formResult);
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+window.initMap = initMap;
+
 
 editSubmit.addEventListener('click', () => {
     handleSubmission(id);

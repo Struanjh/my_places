@@ -19,3 +19,7 @@
 h1.results-header {
     text-align: center;
 }
+
+#map {
+    height: 30vh;
+}

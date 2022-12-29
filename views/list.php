@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="public/styles/list.css">
     <script src="public/scripts/functions.js" type="module" defer></script>
     <script src="public/scripts/list.js" type="module" defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkkQ7ppb6I76nMzr73Ee1heLnglIO9Fs0&callback=initMap&v=weekly"
+      defer
+    ></script>
     <title>List Restaurants</title>
 </head>
 <body>
+    <div id="map"></div>
     <a href="index.php?action=add-restaurant">Back to add page</a>
     <h1 class="results-header">Here are all the aviailable restaurants: </h1>
     <div id="results-container">

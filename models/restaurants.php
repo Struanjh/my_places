@@ -13,13 +13,15 @@ class Restaurants extends Db {
 
   public function addRestaurant($data) {
     $db = $this->connectDB();
-    $newRestaurant = $db->prepare('INSERT INTO restaurants (name, cuisine, price, url)
-    VALUES (:name, :cuisine, :price, :url)');
+    $newRestaurant = $db->prepare('INSERT INTO restaurants (name, cuisine, price, url, lat, lon)
+    VALUES (:name, :cuisine, :price, :url, :lat, :lon)');
     $newRestaurant->execute([
         'name' => $data['name'],
         'cuisine' => $data['cuisine'],
         'price' => $data['price'],
-        'url' => $data['url']
+        'url' => $data['url'],
+        'lat' => $data['lat'],
+        'lon' => $data['lon']
     ]);
   }
 

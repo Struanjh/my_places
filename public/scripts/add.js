@@ -58,6 +58,8 @@ const handleSubmission = async () => {
     };
     if(functions.validateFormSubmission(data.data)) {
         //Call request
+        data['data']['lat'] = functions.getRandomCoors(-180, 180, 3);
+        data['data']['lon'] = functions.getRandomCoors(-90, 90, 3);
         let reqUrl = `/my_places/index.php?action=add-restaurant`;
         console.log(data, reqUrl, headers);
         try {
