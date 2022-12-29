@@ -22,13 +22,17 @@
         <?php
         for ($i=0; $i<count($listOfRestaurants); $i++) {
         ?>
-            <div class="restaurant-container card" data-restaurant-id="<?=$listOfRestaurants[$i]['id']?>">
+            <div class="restaurant-container card" 
+                    data-restaurant-id="<?=$listOfRestaurants[$i]['id'] ?? ''?>"
+                    data-restaurant-lat="<?=$listOfRestaurants[$i]['lat'] ?? ''?>"
+                    data-restaurant-lon="<?=$listOfRestaurants[$i]['lon'] ?? ''?>"
+            >
                 <div class="rest-data-container">
                     <h2>Restaurant <?php echo number_format($i) +1 ?></h2>
-                    <p class="rest-attribute name"><?=$listOfRestaurants[$i]['name']?></p>
-                    <p class="rest-attribute cuisine"><?=$listOfRestaurants[$i]['cuisine']?></p>
-                    <p class="rest-attribute price"><?=$listOfRestaurants[$i]['price']?></p>
-                    <p class="rest-attribute url"><?=$listOfRestaurants[$i]['url']?></p>
+                    <p class="rest-attribute name"><?=$listOfRestaurants[$i]['name'] ?? ''?></p>
+                    <p class="rest-attribute cuisine"><?=$listOfRestaurants[$i]['cuisine'] ?? ''?></p>
+                    <p class="rest-attribute price"><?=$listOfRestaurants[$i]['price'] ?? ''?></p>
+                    <p class="rest-attribute url"><?=$listOfRestaurants[$i]['url'] ?? ''?></p>
                 </div>
                 <div class="controls">
                     <button type="button" name="edit" class="edit">Edit</button>
